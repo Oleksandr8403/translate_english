@@ -6,20 +6,26 @@ translator = Translator()
 text_for_translate = []
 dict_for_pdf = []
 
+path_to_project = ''
+path_to_words_file = path_to_project + 'words_for_translate_2.txt'
+path_to_translated_file = path_to_project + 'translate_2.txt'
+path_to_translated_file_pdf = path_to_project + 'translate_2.pdf'
+path_to_translated_file_mp3 = path_to_project + 'translate_audio_2.mp3'
+
 pdf = FPDF()
 pdf.add_page()
 pdf.add_font('DejaVu', '', 'DejaVuSansCondensed.ttf', uni=True)
 pdf.set_font('DejaVu', '', 18)
 
-with open('words_for_translate.txt_2', 'r') as file1:
+with open(path_to_words_file, 'r') as file1:
     for item in file1:
         text_for_translate.append(item)
 
-with open("translate_2.txt", "w") as file2:
+with open(path_to_translated_file, "w") as file2:
     pass
 
 k = 1
-with open("translate_2.txt", "a") as file3:
+with open(path_to_translated_file, "a") as file3:
     for word in text_for_translate:
         result_ru = translator.translate(word, dest='ru')
         translate_text_ru = result_ru.text
@@ -30,16 +36,16 @@ with open("translate_2.txt", "a") as file3:
         k += 1
         file3.write(full_text)
 
-pdf.output("translate_2.pdf")
+pdf.output(path_to_translated_file_pdf)
 
 my_text = ''
 my_text1 = ''
 dict_words = []
 
-with open('translate_2.txt', 'r') as file:
+with open(path_to_translated_file, 'r') as file:
     for item in file:
         dict_words.append(item)
-with open('translate_audio_2.mp3', 'wb') as fp:
+with open(path_to_translated_file_mp3, 'wb') as fp:
     # need test range(len(dict_words)+1) because in mp3 file is absent last word from words_for_translate.txt
     for i in range(len(dict_words)):
         if i % 2 == 0:
