@@ -7,13 +7,13 @@ translator = Translator()
 text_for_translate = []
 dict_for_pdf = []
 
-number_of_list_words = '3'
+name_file_for_translate_txt = 'main_words'
 
 path_to_project = os.getcwd()
-path_to_words_file = os.path.join(path_to_project, "files", 'words_for_translate_' + number_of_list_words + '.txt')
-path_to_translated_file = os.path.join(path_to_project, "files", 'translate_' + number_of_list_words + '.txt')
-path_to_translated_file_pdf = os.path.join(path_to_project, "files", 'translate_' + number_of_list_words + '.pdf')
-path_to_translated_file_mp3 = os.path.join(path_to_project, "files", 'translate_audio_' + number_of_list_words + '.mp3')
+path_to_words_file = os.path.join(path_to_project, "files", name_file_for_translate_txt + '.txt')
+path_to_translated_file = os.path.join(path_to_project, "files", name_file_for_translate_txt + '_translated.txt')
+path_to_translated_file_pdf = os.path.join(path_to_project, "files", name_file_for_translate_txt + '_translated.pdf')
+path_to_translated_file_mp3 = os.path.join(path_to_project, "files", name_file_for_translate_txt + '_translated.mp3')
 
 pdf = FPDF()
 pdf.add_page()
